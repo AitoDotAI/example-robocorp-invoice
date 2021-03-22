@@ -4,6 +4,8 @@
 
 **Tools:** Using [Aito.ai](https://aito.ai) for machine learning predictions, and [Robocorp](https://robocorp.com/) Open Source RPA platform.
 
+[![Here's a fancy screencast video](https://img.youtube.com/vi/tjWVnskjBlg/0.jpg)](http://www.youtube.com/watch?v=tjWVnskjBlg)
+
 **Prerequisites and preparations**
 
 You will need to complete the following steps in order to run the robot yourself. Should you need help, there is also a way more detailed description of setting the environment [here](https://aito.document360.io/docs/aito-x-robocorp) with another use case.
@@ -20,10 +22,13 @@ You will need to complete the following steps in order to run the robot yourself
 2. Log in to Aito account, and create an instance. Sandboxes are free. Take a note of your instance URL and read write API key after creation is ready.
 3. Add URL and API key to vault.json file. This is the same file where you already added the Google Sheet ID.
 
-Robot tasks:
+**What does it do**
 
-1. First task is ...
+The robot is split in to two main files: `tasks.robot` and `AitoRFHelper.py`. Former takes care of the main workflow in two tasks as described below. The latter serves as a helper and does things like Aito schema creation, and predictions that are just easier in Python.
 
-Prerequisites:
+1. First task is **Upload data** that pulls the dataset from our public S3 bucket. If the table does not yet exist in your Aito instance, it will upload the data in.
+2. Second task is **Label invoices** which will read the Google Sheet file row by row, and make a prediction using Aito, and then fill in the results for each row. The filled values are the predicted GL code ("feature"), the confidence, and either FALSE or TRUE if the row needs a manual review, based on the set confidence `${threshold}`.
 
-Contact:
+NOTE: GCP has ratelimits especially for Sheet write operations. If you are getting errors, start by checking what rate limits apply to you. Add a sleep in Keyword `Predict GL With Aito` for-loop if the per minute rates are exceeded.
+
+**Contact:** Best way to reach us is through our [Slack group](https://aito.ai/join-slack/). Feeback would be awesome! <3
