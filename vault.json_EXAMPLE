@@ -1,0 +1,7 @@
+{
+  "credentials": {
+    "aito_api_url": "YOUR AITO API URL",
+    "aito_api_key": "YOUR AITO API READ WRITE KEY",
+    "g_sheet_id": "YOUR GOOGLE SHEET ID"
+  }
+}
