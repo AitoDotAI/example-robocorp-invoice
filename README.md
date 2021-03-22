@@ -1,4 +1,4 @@
-### Aito.ai example: categorise invoices with Robocorp
+## Aito.ai example: categorise invoices with Robocorp
 
 **Summary:** Example robot that uploads and historic [dataset](https://www.kaggle.com/nikhil1011/predict-product-category-from-given-invoice) of purchase invoice data to Aito, and then reads more new invoices from Google Sheet and assigns them GL Codes based on ML predictions.
 
@@ -6,7 +6,7 @@
 
 [![Here's a fancy screencast video](https://img.youtube.com/vi/tjWVnskjBlg/0.jpg)](http://www.youtube.com/watch?v=tjWVnskjBlg)
 
-**Prerequisites and preparations**
+### Prerequisites and preparations
 
 You will need to complete the following steps in order to run the robot yourself. Should you need help, there is also a way more detailed description of setting the environment [here](https://aito.document360.io/docs/aito-x-robocorp) with another use case.
 
@@ -22,7 +22,7 @@ You will need to complete the following steps in order to run the robot yourself
 2. Log in to Aito account, and create an instance. Sandboxes are free. Take a note of your instance URL and read write API key after creation is ready.
 3. Add URL and API key to `vault.json` file. This is the same file where you already added the Google Sheet ID.
 
-**What does it do**
+### What does it do
 
 The robot is split in to two main files: `tasks.robot` and `AitoRFHelper.py`. Former takes care of the main workflow in two tasks as described below. The latter serves as a helper and does things like Aito schema creation, and predictions that are just easier in Python.
 
