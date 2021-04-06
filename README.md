@@ -29,6 +29,4 @@ The robot is split in to two main files: `tasks.robot` and `AitoRFHelper.py`. Fo
 1. First task is **Upload data** that pulls the dataset from our public S3 bucket. If the table does not yet exist in your Aito instance, it will upload the data in.
 2. Second task is **Label invoices** which will read the Google Sheet file row by row, and make a prediction using Aito, and then fill in the results for each row. The filled values are the predicted GL code ("feature"), the confidence, and either FALSE or TRUE if the row needs a manual review, based on the set confidence `${threshold}`.
 
-NOTE: GCP has ratelimits especially for Sheet write operations. If you are getting errors, start by checking what rate limits apply to you. Add a sleep in Keyword `Predict GL With Aito` for-loop if the per minute rates are exceeded.
-
 **Contact:** Best way to reach us is through our [Slack group](https://aito.ai/join-slack/). Feeback would be awesome! <3
