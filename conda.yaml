@@ -1,9 +1,9 @@
 channels:
-  - defaults
   - conda-forge
 dependencies:
   - python=3.7.5
   - pip=20.1
   - pip:
-    - rpaframework[google]==9.4.0
-    - aitoai==0.4.1
+    - rpaframework==12.1.1
+    - rpaframework-google==1.0.2
+    - aitoai==0.4.3

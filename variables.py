@@ -1,7 +1,7 @@
 # +
-from RPA.Robocloud.Secrets import Secrets
+from RPA.Robocorp.Vault import Vault
 
-secrets = Secrets()
-AITO_API_URL = secrets.get_secret("credentials")["aito_api_url"]
-AITO_API_KEY = secrets.get_secret("credentials")["aito_api_key"]
-G_SHEET_ID = secrets.get_secret("credentials")["g_sheet_id"]
+_secrets = Vault().get_secret("credentials")
+AITO_API_URL = _secrets["aito_api_url"]
+AITO_API_KEY = _secrets["aito_api_key"]
+G_SHEET_ID = _secrets["g_sheet_id"]

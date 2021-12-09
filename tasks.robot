@@ -1,13 +1,14 @@
 *** Settings ***
 Variables       variables.py
 Library         RPA.Cloud.Google
+Library         RPA.Robocorp.Vault
 Library         RPA.HTTP
 Library         AitoRFHelper
 Library         Collections
 Library         Dialogs
 Library         aito.api
 Library         aito.client.AitoClient    ${AITO_API_URL}    ${AITO_API_KEY}    False    WITH NAME    aito_client
-Suite Setup     Init Sheets Client    service_account.json
+Suite Setup     Init Sheets    service_account.json
 
 *** Variables ***
 ${trainingFile}         invoice_train.csv
@@ -40,7 +41,7 @@ Upload data
 Label invoices
     ${client}    Get Library Instance    aito_client
     ${predictQuery}    ${evaluateQuery}=    Quick Predict And Evaluate    ${client}    ${table_name}     ${predictField}
-    ${sheet}=    Get Values     ${G_SHEET_ID}      ${SHEET_RANGE}
+    ${sheet}=    Get Sheet Values     ${G_SHEET_ID}      ${SHEET_RANGE}
     ${values}    Set Variable    ${sheet}[values][0:]
     FOR    ${row}    IN    @{values}
         &{aitoresult}=    Predict Row       ${client}       ${row}    ${predictQuery}
@@ -49,5 +50,5 @@ Label invoices
         Append To List    ${row}     ${aitoresult}[confidence]
         Append To List    ${row}     ${review}
     END
-    ${response}=    Update Values    ${G_SHEET_ID}    ${SHEET_RANGE}    ${sheet}[values]
+    ${response}=    Update Sheet Values    ${G_SHEET_ID}    ${SHEET_RANGE}    ${sheet}[values]      ROWS
     Log Many    ${response}
