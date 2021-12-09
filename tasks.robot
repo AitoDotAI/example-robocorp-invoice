@@ -15,7 +15,7 @@ ${trainingFile}         invoice_train.csv
 ${tableName}            roboc_invoices
 ${predictField}         GL_Code
 ${threshold}            0.8
-${SHEET_RANGE}          Sheet1!A2:H51
+${SHEET_RANGE}          Sheet1!A2:H
 
 *** Keywords ***
 Download Sample Data
